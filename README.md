@@ -98,5 +98,3 @@ In this guide, you’ll learn how to customize the header of a MAUI Kanban board
 **Output:**
 
 ![HeaderCustomizationKanban](https://github.com/user-attachments/assets/d1e049d2-e50b-4cff-9ab9-515289c57922)
-
-**Conclusion:**
