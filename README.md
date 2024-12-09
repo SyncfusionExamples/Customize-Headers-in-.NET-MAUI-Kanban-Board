@@ -1,7 +1,7 @@
 # Customize-Headers-in-.NET-MAUI-Kanban-Board
 This article provides a detailed walkthrough on how to customize the header of [.NET MAUI Kanban board](https://www.syncfusion.com/maui-controls/maui-kanban).
 
-In this guide, you’ll learn how to customize the header of a MAUI Kanban board by changing the background color and image based on the column title. The customization is achieved using DataTriggers within the [HeaderTemplate](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html#Syncfusion_Maui_Kanban_SfKanban_HeaderTemplate) of the [SfKanban](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html) component.
+In this guide, you’ll learn how to customize the header of a MAUI Kanban board by changing the background color, text color and image based on the column title. The customization is achieved using IValueConverter within the [HeaderTemplate](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html#Syncfusion_Maui_Kanban_SfKanban_HeaderTemplate) of the [SfKanban](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html) component.
 
 **Step 1:** Initialize the SfKanban and add the Columns to it as follows
 
@@ -32,69 +32,122 @@ In this guide, you’ll learn how to customize the header of a MAUI Kanban board
 </kanban:SfKanban>
 ```
 
-**Step 2:** To customize the header, use the HeaderTemplate property. A DataTemplate is used to define the layout of each header
+**Step 2:** This code defines a resource dictionary within a ContentPage, registering three converters for use in XAML bindings throughout the page.
 
 **XAML**
 
 ```
-<kanban:SfKanban.HeaderTemplate>
-
-       <DataTemplate>
-           <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-           </StackLayout>
-       </DataTemplate>
-
-</kanban:SfKanban.HeaderTemplate>
+<ContentPage.Resources>
+   <ResourceDictionary>
+       <local:BackgroundColorConverter x:Key="BackgroundColorConverter"/>
+       <local:ImageSourceConverter x:Key="ImageSourceConverter"/>
+       <local:TextColorConverter x:Key="TextColorConverter"/>
+   </ResourceDictionary>
+</ContentPage.Resources> 
 ```
 
-**Step 3:** Use DataTriggers to dynamically change the background color and image of the header based on the column title.
+**Step 3:** To customize the header, use the HeaderTemplate property and use convertor to dynamically change the background color, text color and image of the header based on the column title.
 
 **XAML**
 
 ```
 <kanban:SfKanban.HeaderTemplate>
    <DataTemplate>
-       <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+       <StackLayout Orientation="Horizontal" Padding="10" 
+            HorizontalOptions="FillAndExpand" VerticalOptions="Center" 
+            BackgroundColor="{Binding Title, Converter={StaticResource BackgroundColorConverter}}">
 
-           <StackLayout.Triggers>
-               <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="To Do">
-                   <Setter Property="BackgroundColor" Value="LightGoldenrodYellow"/>
-               </DataTrigger>
-               <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="In Progress">
-                   <Setter Property="BackgroundColor" Value="LightCyan"/>
-               </DataTrigger>
-               <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="Code Review">
-                   <Setter Property="BackgroundColor" Value="LightBlue"/>
-               </DataTrigger>
-               <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="Done">
-                   <Setter Property="BackgroundColor" Value="LightGreen"/>
-               </DataTrigger>
-           </StackLayout.Triggers>
+           <Image VerticalOptions="Center" WidthRequest="40" HeightRequest="40"
+          Source="{Binding Title, Converter={StaticResource ImageSourceConverter}}"/>
 
-           <Image VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
-               <Image.Triggers>
-                   <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="To Do">
-                       <Setter Property="Source" Value="todolist.png" />
-                   </DataTrigger>
-                   <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="In Progress">
-                       <Setter Property="Source" Value="inprogress.png" />
-                   </DataTrigger>
-                   <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="Code Review">
-                       <Setter Property="Source" Value="review.png" />
-                   </DataTrigger>
-                   <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="Done">
-                       <Setter Property="Source" Value="done.png" />
-                   </DataTrigger>
-               </Image.Triggers>
-           </Image>
-
-           <Label Text="{Binding Title}" TextColor="Black" FontAttributes="Bold" Margin="10" FontSize="18" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-
+            <Label Text="{Binding Title}" TextColor="{Binding Title, Converter={StaticResource TextColorConverter}}" FontAttributes="Bold" 
+            Margin="10" FontSize="18" VerticalOptions="Center" 
+            HorizontalOptions="StartAndExpand" />
        </StackLayout>
    </DataTemplate>
 </kanban:SfKanban.HeaderTemplate>
 ```
 
+**Step 4:** This code defines three converters **BackgroundColorConverter**, **ImageSourceConverter** and **TextColorConverter** which map a Title string to corresponding background colors, text color and image sources respectively for dynamic UI binding in XAML.
+
+**C#**
+
+```
+public class BackgroundColorConverter : IValueConverter
+{
+   public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       if (value is string title)
+       {
+           return title switch
+           {
+               "To Do" => Colors.LightGoldenrodYellow,
+               "In Progress" => Colors.LightCyan,
+               "Code Review" => Colors.LightBlue,
+               "Done" => Colors.LightGreen,
+               _ => Colors.Transparent
+           };
+       }
+       return Colors.Transparent;
+   }
+
+   public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       throw new NotImplementedException();
+   }
+}
+
+public class ImageSourceConverter : IValueConverter
+{
+   public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       if (value is string title)
+       {
+           return title switch
+           {
+               "To Do" => "todolist.png",
+               "In Progress" => "inprogress.png",
+               "Code Review" => "review.png",
+               "Done" => "done.png",
+               _ => null
+           };
+       }
+       return null;
+   }
+
+   public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       throw new NotImplementedException();
+   }
+
+}
+
+public class TextColorConverter : IValueConverter
+{
+   public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       if (value is string title)
+       {
+           return title switch
+           {
+               "To Do" => Colors.Orange,
+               "In Progress" => Colors.DarkCyan,
+               "Code Review" => Colors.Blue,
+               "Done" => Colors.Green,
+               _ => Colors.Transparent
+           };
+       }
+       return null;
+   }
+
+   public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+   {
+       throw new NotImplementedException();
+   }
+}
+```
+
 **Output:**
 
-![HeaderCustomizationKanban](https://github.com/user-attachments/assets/d1e049d2-e50b-4cff-9ab9-515289c57922)
+![KanbanHeaderCustomization](https://github.com/user-attachments/assets/cd9df08c-6874-4e9e-b88a-dcdd05e6246c)
+
