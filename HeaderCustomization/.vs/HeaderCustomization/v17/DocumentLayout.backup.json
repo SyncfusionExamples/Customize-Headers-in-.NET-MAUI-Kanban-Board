@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|d:\\kanban\\source\\customize-headers-in-.net-maui-kanban-board\\headercustomization\\headercustomization\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|solutionrelative:headercustomization\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|d:\\kanban\\source\\customize-headers-in-.net-maui-kanban-board\\headercustomization\\headercustomization\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|solutionrelative:headercustomization\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|d:\\kanban\\source\\customize-headers-in-.net-maui-kanban-board\\headercustomization\\headercustomization\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{076A2CD7-9F0B-4A59-B77F-14D054F0ED62}|HeaderCustomization\\HeaderCustomization.csproj|solutionrelative:headercustomization\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "HeaderCustomization\\MainPage.xaml.cs",
+              "ToolTip": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\MainPage.xaml.cs",
+              "RelativeToolTip": "HeaderCustomization\\MainPage.xaml.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAADwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:36:52.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ViewModel.cs",
+              "DocumentMoniker": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\ViewModel.cs",
+              "RelativeDocumentMoniker": "HeaderCustomization\\ViewModel.cs",
+              "ToolTip": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\ViewModel.cs",
+              "RelativeToolTip": "HeaderCustomization\\ViewModel.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwDUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T09:36:07.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\MainPage.xaml",
+              "RelativeDocumentMoniker": "HeaderCustomization\\MainPage.xaml",
+              "ToolTip": "D:\\Kanban\\source\\Customize-Headers-in-.NET-MAUI-Kanban-Board\\HeaderCustomization\\HeaderCustomization\\MainPage.xaml",
+              "RelativeToolTip": "HeaderCustomization\\MainPage.xaml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-20T09:31:56.788Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,14 @@
         <local:ViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BackgroundColorConverter x:Key="BackgroundColorConverter" />
+            <local:ImageSourceConverter x:Key="ImageSourceConverter" />
+            <local:TextColorConverter x:Key="TextColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <kanban:SfKanban AutoGenerateColumns="False" 
                      HorizontalOptions="FillAndExpand" 
                      VerticalOptions="FillAndExpand" 
@@ -32,42 +40,16 @@
 
         <kanban:SfKanban.HeaderTemplate>
             <DataTemplate>
-                <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Padding="10" 
+                     HorizontalOptions="FillAndExpand" VerticalOptions="Center" 
+                     BackgroundColor="{Binding Title, Converter={StaticResource BackgroundColorConverter}}">
 
-                    <StackLayout.Triggers>
-                        <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="To Do">
-                            <Setter Property="BackgroundColor" Value="LightGoldenrodYellow"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="In Progress">
-                            <Setter Property="BackgroundColor" Value="LightCyan"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="Code Review">
-                            <Setter Property="BackgroundColor" Value="LightBlue"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="StackLayout" Binding="{Binding Title}" Value="Done">
-                            <Setter Property="BackgroundColor" Value="LightGreen"/>
-                        </DataTrigger>
-                    </StackLayout.Triggers>
+                    <Image VerticalOptions="Center" WidthRequest="40" HeightRequest="40"
+                   Source="{Binding Title, Converter={StaticResource ImageSourceConverter}}"/>
 
-                    <Image VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="To Do">
-                                <Setter Property="Source" Value="todolist.png" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="In Progress">
-                                <Setter Property="Source" Value="inprogress.png" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="Code Review">
-                                <Setter Property="Source" Value="review.png" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="Image" Binding="{Binding Title}" Value="Done">
-                                <Setter Property="Source" Value="done.png" />
-                            </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
-
-                    <Label Text="{Binding Title}" TextColor="Black" FontAttributes="Bold" Margin="10" FontSize="18" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-
+                    <Label Text="{Binding Title}" TextColor="{Binding Title, Converter={StaticResource TextColorConverter}}" FontAttributes="Bold" 
+                   Margin="10" FontSize="18" VerticalOptions="Center" 
+                   HorizontalOptions="StartAndExpand" />
                 </StackLayout>
             </DataTemplate>
         </kanban:SfKanban.HeaderTemplate>
