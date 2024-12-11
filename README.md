@@ -146,5 +146,5 @@ public class TextColorConverter : IValueConverter
 
 **Output:**
 
-![KanbanHeaderCustomization](https://github.com/user-attachments/assets/cd9df08c-6874-4e9e-b88a-dcdd05e6246c)
+![HeaderCustomization](https://github.com/user-attachments/assets/b8f362b1-c093-4cf7-8029-5d06d5b9238c)
 
