@@ -1,4 +1,4 @@
-# Customize-Headers-in-.NET-MAUI-Kanban-Board
+# Customize Headers in .NET MAUI Kanban Board
 This article provides a detailed walkthrough on how to customize the header of [.NET MAUI Kanban board](https://www.syncfusion.com/maui-controls/maui-kanban).
 
 In this guide, you'll learn how to customize the header of a MAUI Kanban board by changing the background color, text color and image based on the column title. The customization is achieved using **IValueConverter** within the [HeaderTemplate](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html#Syncfusion_Maui_Kanban_SfKanban_HeaderTemplate) of the [SfKanban](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Kanban.SfKanban.html) component.
