@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:kanban="clr-namespace:Syncfusion.Maui.Kanban;assembly=Syncfusion.Maui.Kanban"
+             xmlns:local="clr-namespace:HeaderCustomization"
+             x:Class="HeaderCustomization.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BackgroundColorConverter x:Key="BackgroundColorConverter" />
+            <local:ImageSourceConverter x:Key="ImageSourceConverter" />
+            <local:TextColorConverter x:Key="TextColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <kanban:SfKanban AutoGenerateColumns="False" 
+                     HorizontalOptions="FillAndExpand" 
+                     VerticalOptions="FillAndExpand" 
+                     ItemsSource="{Binding Cards}">
+
+        <kanban:SfKanban.Columns>
+
+            <kanban:KanbanColumn Title="To Do" Categories="Open" >
+            </kanban:KanbanColumn>
+
+            <kanban:KanbanColumn Title="In Progress" Categories="In Progress">
+            </kanban:KanbanColumn>
+
+            <kanban:KanbanColumn Title="Code Review" Categories="Code Review">
+            </kanban:KanbanColumn>
+
+            <kanban:KanbanColumn Title="Done"  Categories="Done">
+            </kanban:KanbanColumn>
+
+        </kanban:SfKanban.Columns>
+
+        <kanban:SfKanban.HeaderTemplate>
+            <DataTemplate>
+                <StackLayout Orientation="Horizontal" Padding="10" 
+                     HorizontalOptions="FillAndExpand" VerticalOptions="Center" 
+                     BackgroundColor="{Binding Title, Converter={StaticResource BackgroundColorConverter}}">
+
+                    <Image VerticalOptions="Center" WidthRequest="40" HeightRequest="40"
+                   Source="{Binding Title, Converter={StaticResource ImageSourceConverter}}"/>
+
+                    <Label Text="{Binding Title}" TextColor="{Binding Title, Converter={StaticResource TextColorConverter}}" FontAttributes="Bold" 
+                   Margin="10" FontSize="18" VerticalOptions="Center" 
+                   HorizontalOptions="StartAndExpand" />
+                </StackLayout>
+            </DataTemplate>
+        </kanban:SfKanban.HeaderTemplate>
+
+    </kanban:SfKanban>
+
+</ContentPage>
